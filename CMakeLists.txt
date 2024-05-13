@@ -269,7 +269,9 @@ if (NOT ASMJIT_NO_CUSTOM_FLAGS)
     # The following flags can save few bytes in the resulting binary.
     asmjit_detect_cflags(ASMJIT_PRIVATE_CFLAGS_REL
       -fmerge-all-constants    # Merge all constants even if it violates ISO C++.
-      -fno-enforce-eh-specs)   # Don't enforce termination if noexcept function throws.
+      # GLK: Clang is not happy with this flag and for some reason detection fails to honour this.
+      # -fno-enforce-eh-specs   # Don't enforce termination if noexcept function throws.
+    )
   endif()
 endif()
 
